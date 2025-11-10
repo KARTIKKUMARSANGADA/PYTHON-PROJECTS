@@ -2,27 +2,33 @@
 
 def run_quiz(questions):
     score = 0
-    print("\n🎯 Welcome to the Python Quiz Game! 🎯")
-    print("You’ll get 1 point for each correct answer.\n")
-    
-    for i, question in enumerate(questions, start=1):
-        print(f"\nQ{i}. {question['question']}")
-        for option in question['options']:
+    print("\nWelcome to the Python Quiz Game!")
+    print("You will get 1 point for each correct answer.\n")
+
+    # Loop through all the questions
+    for i, q in enumerate(questions, start=1):
+        print(f"\nQuestion {i}: {q['question']}")
+        for option in q['options']:
             print(option)
+
         
-        answer = input("Your answer (A/B/C/D): ").strip().upper()
-        
-        if answer == question['answer']:
-            print("✅ Correct!")
+        answer = input("Enter your answer (A/B/C/D): ").strip().upper()
+
+        # Check if answer is correct
+        if answer == q['answer']:
+            print("✅ Correct Answer!")
             score += 1
         else:
-            print(f"❌ Wrong! The correct answer is {question['answer']}")
-    
-    print("\n🎉 Quiz Completed!")
-    print(f"Your final score: {score}/{len(questions)}")
-    print("Thanks for playing!\n")
+            print(f"❌ Oops! The correct answer was {q['answer']}")
 
-# List of questions
+    
+    print("\n---------------------------------")
+    print("🎉 Quiz Completed! 🎉")
+    print(f"Your final score is: {score} / {len(questions)}")
+    print("Thanks for playing!\n")
+    print("---------------------------------")
+
+# List of quiz questions
 quiz_questions = [
     {
         "question": "Which keyword is used to define a function in Python?",
@@ -30,12 +36,12 @@ quiz_questions = [
         "answer": "B"
     },
     {
-        "question": "What is the output of: print(2 ** 3)?",
+        "question": "What is the output of print(2 ** 3)?",
         "options": ["A) 6", "B) 8", "C) 9", "D) 5"],
         "answer": "B"
     },
     {
-        "question": "Which of the following is a mutable data type?",
+        "question": "Which of the following is a mutable data type in Python?",
         "options": ["A) Tuple", "B) String", "C) List", "D) Integer"],
         "answer": "C"
     },
